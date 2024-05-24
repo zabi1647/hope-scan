@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Report</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="container1">
+        <div class="back-button">
+            <button onclick="location.href='folder_page.html'">Back</button>
+        </div>
+        <h1>Patient Details</h1>
+        <div id="patientDetails">
+            <div class="form-group">
+                <label>Name:</label>
+                <span id="name"></span>
+            </div>
+            <div class="form-group">
+                <label>Age:</label>
+                <span id="age"></span>
+            </div>
+            <div class="form-group">
+                <label>Contact Number:</label>
+                <span id="contact"></span>
+            </div>
+            <div class="form-group">
+                <label>Address:</label>
+                <span id="address"></span>
+            </div>
+            <div class="form-group">
+                <label>CNIC:</label>
+                <span id="cnic"></span>
+            </div>
+            <div class="form-group">
+                <label>Description:</label>
+                <span id="description"></span>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button class="home" onclick="location.href='index.html'">Home</button>
+            <button class="email" onclick="sendEmail()">Email</button>
+            <button class="print" onclick="window.print()">Print</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const patientData = JSON.parse(localStorage.getItem('patientData'));
+        
+            if (patientData) {
+                document.getElementById('name').textContent = patientData.name;
+                document.getElementById('age').textContent = patientData.age;
+                document.getElementById('contact').textContent = patientData.contact;
+                document.getElementById('address').textContent = patientData.address;
+                document.getElementById('cnic').textContent = patientData.cnic;
+                document.getElementById('description').textContent = patientData.description || 'No description available';
+            } else {
+                alert('No patient data found in local storage.');
+            }
+        });
+
+        function sendEmail() {
+            alert('Email functionality is not implemented.');
+        }
+    </script>
+</body>
+</html>
